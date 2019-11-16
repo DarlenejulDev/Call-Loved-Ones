@@ -1,0 +1,77 @@
+when<!doctype html>
+<html>
+<head>
+    <name>Check Up On Loved Ones</name>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Local</h3>
+
+                <% if (user.local.email) { %>
+                    <p>
+                        <strong>id</strong>: <%= user._id %><br>
+                        <strong>email</strong>: <%= user.local.email %><br>
+                        <strong>password</strong>: <%= user.local.password %>
+                    </p>
+
+                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                <% } else { %>
+                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                <% } %>
+
+            </div>
+        </div>
+
+      <h1>I haven't spoken to ...</h1>
+    <form action="/messages" method="POST">
+      <section>
+        <label for="Name">Name</label>
+        <input type="text" id="name"  name="name" value="">
+      </section>
+      <section>
+        <label for="when">When do you want to call?</label>
+        <input type="text" id="when" name="when" value="">
+      </section>
+      <section>
+        <label for="number">Phone number</label>
+        <input type="number" id="number"  name="number" value="">
+      </section>
+      <section>
+        <input type="submit" name="submit" value="Submit">
+      </section>
+    </form>
+    <div class="">
+      <table>
+           <th>Name</th>
+           <th>When do you want to call?</th>
+           <th>Phone Number</th>
+       <% for(let i=0; i <messages.length; i++) {%>
+        <tbody>
+          <td><%= messages[i].name %></td>
+          <td><%= messages[i].when %></td>
+          <td><%= messages[i].number %></td>
+          <td><button class="complete" type="button" name="button">Complete</button></td>
+        </tbody>
+       <% } %>
+     </table>
+
+  </div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
