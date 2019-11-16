@@ -27,7 +27,7 @@ module.exports = function(app, passport, db) {
 // message board routes ===============================================================
 
     // app.post('/messages', (req, res) => {
-    //   db.collection('messages').save({name: req.body.name, msg: req.body.msg, thumbUp: 0, thumbDown:0}, (err, result) => {
+    //   db.collection('messages').save({personName: req.body.personName, msg: req.body.msg, thumbUp: 0, thumbDown:0}, (err, result) => {
     //     if (err) return console.log(err)
     //     console.log('saved to database')
     //     res.redirect('/profile')
@@ -36,7 +36,7 @@ module.exports = function(app, passport, db) {
     //
     // app.put('/messages', (req, res) => {
     //   db.collection('messages')
-    //   .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
+    //   .findOneAndUpdate({personName: req.body.personName, msg: req.body.msg}, {
     //     $set: {
     //       thumbUp:req.body.thumbUp + 1
     //     }
@@ -51,7 +51,7 @@ module.exports = function(app, passport, db) {
     //
     // app.put('/messages2', (req, res) => {
     //   db.collection('messages')
-    //   .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
+    //   .findOneAndUpdate({personName: req.body.personName, msg: req.body.msg}, {
     //     $set: {
     //       thumbUp:req.body.thumbUp - 1
     //     }
@@ -66,7 +66,7 @@ module.exports = function(app, passport, db) {
     //
     //
     // app.delete('/messages', (req, res) => {
-    //   db.collection('messages').findOneAndDelete({name: req.body.name, msg: req.body.msg}, (err, result) => {
+    //   db.collection('messages').findOneAndDelete({personName: req.body.personName, msg: req.body.msg}, (err, result) => {
     //     if (err) return res.send(500, err)
     //     res.send('Message deleted!')
     //   })
@@ -83,7 +83,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/messages', (req, res) => {
-  db.collection('messages').save({name: req.body.name, number: req.body.number, when: req.body.when}, (err, result) => {
+  db.collection('messages').save({personName: req.body.personName, phoneNumber: req.body.phoneNumber, when: req.body.when}, (err, result) => {
     if (err) return console.log(err)
     console.log('saved to database')
     res.redirect('/profile')
@@ -92,7 +92,7 @@ app.post('/messages', (req, res) => {
 
 app.put('/messages', (req, res) => {
   db.collection('messages')
-  .findOneAndUpdate({name: req.body.name, number: req.body.number}, {
+  .findOneAndUpdate({personName: req.body.personName, phoneNumber: req.body.phoneNumber}, {
     $set: {
     }
   },
@@ -106,7 +106,7 @@ app.put('/messages', (req, res) => {
 })
 
 app.delete('/messages', (req, res) => {
-  db.collection('messages').findOneAndDelete({name: req.body.name, number: req.body.number, when: req.body.when}, (err, result) => {
+  db.collection('messages').findOneAndDelete({personName: req.body.personName, phoneNumber: req.body.phoneNumber, when: req.body.when}, (err, result) => {
     if (err) {
       console.log('delete failed')
       return res.send(500, err)

@@ -1,7 +1,7 @@
 when<!doctype html>
 <html>
 <head>
-    <name>Check Up On Loved Ones</name>
+    <title>Check Up On Loved Ones</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
@@ -39,34 +39,38 @@ when<!doctype html>
       <h1>I haven't spoken to ...</h1>
     <form action="/messages" method="POST">
       <section>
-        <label for="Name">Name</label>
-        <input type="text" id="name"  name="name" value="">
+        <label for="personName">Name</label>
+        <input type="text" class="personName"  name="personName" value="">
       </section>
       <section>
         <label for="when">When do you want to call?</label>
-        <input type="text" id="when" name="when" value="">
+        <input type="text" class="when" name="when" value="">
       </section>
       <section>
-        <label for="number">Phone number</label>
-        <input type="number" id="number"  name="number" value="">
+        <label for="phoneNumber">Phone number</label>
+        <input type="number" class="phoneNumber"  name="phoneNumber" value="">
       </section>
       <section>
         <input type="submit" name="submit" value="Submit">
       </section>
     </form>
     <div class="">
-      <table>
+      <table id= "callLog">
+        <thead>
            <th>Name</th>
            <th>When do you want to call?</th>
            <th>Phone Number</th>
-       <% for(let i=0; i <messages.length; i++) {%>
+        </thead>
         <tbody>
-          <td><%= messages[i].name %></td>
-          <td><%= messages[i].when %></td>
-          <td><%= messages[i].number %></td>
-          <td><button class="complete" type="button" name="button">Complete</button></td>
+         <% for(let i=0; i <messages.length; i++) {%>
+          <tr>
+            <td><%= messages[i].personName %></td>
+            <td><%= messages[i].when %></td>
+            <td><%= messages[i].phoneNumber %></td>
+            <td><button class="complete" value="delete"type="button" name="button">Complete</button></td>
+          </tr>
+          <% } %>
         </tbody>
-       <% } %>
      </table>
 
   </div>
