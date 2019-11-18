@@ -106,11 +106,12 @@ app.put('/messages', (req, res) => {
 })
 
 app.delete('/messages', (req, res) => {
-  db.collection('messages').findOneAndDelete({personName: req.body.personName, phoneNumber: req.body.phoneNumber, when: req.body.when}, (err, result) => {
+  db.collection('messages').findOneAndDelete({personName: req.body.personName, phoneNumber: (req.body.phoneNumber).toString(), when: req.body.when}, (err, result) => {
     if (err) {
       console.log('delete failed')
       return res.send(500, err)
     }
+    ('message deleted sis'+ JSON.stringify(result))
     res.send('Message deleted!')
   })
 })

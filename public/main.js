@@ -14,9 +14,12 @@ let deletionComplete= document.querySelectorAll('tbody tr td')
 
 Array.from(completion).forEach(function(element) {
       element.addEventListener('click', function(){
-        // alert('hi')
+        alert();
         const deletionComplete=this.parentNode.parentNode.remove().textContent
-         // personName= this.parentNode.parentNode.childNodes[1].childNodes[0].remove().innerText;
+       //   const personName= this.parentNode.parentNode.childNodes[1].childNodes[0].innerText
+       //   const when=
+       //   this.parentNode.parentNode.childNodes[1].childNodes[2].innerText
+       // const phoneNumber = this.parentNode.parentNode.childNodes[1].childNodes[4].innerText
 
 });
         fetch('messages', {
